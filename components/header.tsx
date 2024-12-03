@@ -13,7 +13,7 @@ export function Header() {
         <Link href="/" className="text-2xl font-bold tracking-tighter flex justify-center items-center gap-2">
           <span className="">
             <Image
-              src={"/favicon-round-png.png"}
+              src={"/someflagger-logo.png"}
               width={40}
               height={40}
               alt="logo"
