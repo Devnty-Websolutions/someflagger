@@ -19,7 +19,7 @@ export function FileUploadComponent() {
   };
 
   return (
-    <div className="flex flex-col items-center space-y-4 w-full max-w-sm">
+    <div className="flex flex-col items-center space-y-4 w-full">
        {files.length > 0 && (
         <div className="w-full">
           <p className="text-sm text-gray-500 mb-2">Selected files:</p>
