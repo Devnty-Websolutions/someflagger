@@ -32,7 +32,7 @@ export default function ReportForm() {
       <Card className="border-0 shadow-none">
         <CardHeader className="text-center space-y-1.5">
           <CardTitle className="text-xl font-extrabold flex flex-col mb-2">
-            <span>Seen Harmful Content Online?</span>
+            <span className="mb-2">Seen harmful features on your social media and games platforms?</span>
             <span className="text-sm font-semibold">Report It Here, and We’ll Take Action!</span>
           </CardTitle>
         </CardHeader>
