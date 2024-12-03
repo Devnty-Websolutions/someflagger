@@ -13,8 +13,9 @@ import {
 // import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Send} from "lucide-react";
+import { Send } from "lucide-react";
 import { FileUploadComponent } from "./file-upload";
+import Link from "next/link";
 
 export default function ReportForm() {
   const [platform, setPlatform] = React.useState("");
@@ -110,12 +111,28 @@ export default function ReportForm() {
             <div className="space-y-4">
               <FileUploadComponent />
               <Button type="submit" className="w-full">
-              <Send className="w-4 h-4 mr-2" />
+                <Send className="w-4 h-4 mr-2" />
                 Send report
               </Button>
             </div>
           </form>
         </CardContent>
+        <div className="w-full flex justify-center">
+          <Link
+            href={"https://www.devnty.com"}
+            target="_blank"
+            title="Powered by Devnty Websolutions"
+            className="flex items-center space-x-2 p-2"
+          >
+            <span className="text-[0.6rem]">powered by</span>
+            <img
+              src="/devnty-logo.png"
+              alt="devnty websolutions logo"
+              width={100}
+              height={20}
+            ></img>
+          </Link>
+        </div>
       </Card>
     </div>
   );
