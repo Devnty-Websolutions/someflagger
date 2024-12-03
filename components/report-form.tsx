@@ -53,8 +53,21 @@ export default function ReportForm() {
                 </SelectContent>
               </Select>
             </div>
-
             <div className="space-y-2">
+              <Label className="font-jura text-sm">Select issue</Label>
+              <Select value={platform} onValueChange={setPlatform}>
+                <SelectTrigger>
+                  <SelectValue placeholder="Select issue" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="harmful-content">Harmful content</SelectItem>
+                  <SelectItem value="algorithmic-issue">Algorithmic issue</SelectItem>
+                  <SelectItem value="unsafe-feature">Unsafe feature</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* <div className="space-y-2">
               <Label className="font-jura text-sm">Select Issue</Label>
               <RadioGroup value={issueType} onValueChange={setIssueType}>
                 <div className="flex items-center space-x-2">
@@ -70,7 +83,7 @@ export default function ReportForm() {
                   <Label htmlFor="unsafe">Unsafe features</Label>
                 </div>
               </RadioGroup>
-            </div>
+            </div> */}
 
             <div className="space-y-2">
               <Label className="font-jura text-sm">
