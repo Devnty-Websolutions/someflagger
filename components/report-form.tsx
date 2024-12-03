@@ -13,13 +13,15 @@ import {
 // import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { Upload } from "lucide-react";
+import { Send} from "lucide-react";
+import { FileUploadComponent } from "./file-upload";
 
 export default function ReportForm() {
   const [platform, setPlatform] = React.useState("");
-  const [issueType,
+  const [
+    issueType,
     //  setIssueType
-    ] = React.useState("");
+  ] = React.useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,8 +34,12 @@ export default function ReportForm() {
       <Card className="border-0 shadow-none">
         <CardHeader className="text-center space-y-1.5">
           <CardTitle className="text-xl font-extrabold flex flex-col mb-2">
-            <span className="mb-2">Seen harmful features on your social media and games platforms?</span>
-            <span className="text-sm font-semibold">Report It Here, and We’ll Take Action!</span>
+            <span className="mb-2">
+              Seen harmful features on your social media and games platforms?
+            </span>
+            <span className="text-sm font-semibold">
+              Report It Here, and We’ll Take Action!
+            </span>
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -62,8 +68,12 @@ export default function ReportForm() {
                   <SelectValue placeholder="Select issue" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="harmful-content">Harmful content</SelectItem>
-                  <SelectItem value="algorithmic-issue">Algorithmic issue</SelectItem>
+                  <SelectItem value="harmful-content">
+                    Harmful content
+                  </SelectItem>
+                  <SelectItem value="algorithmic-issue">
+                    Algorithmic issue
+                  </SelectItem>
                   <SelectItem value="unsafe-feature">Unsafe feature</SelectItem>
                 </SelectContent>
               </Select>
@@ -98,12 +108,9 @@ export default function ReportForm() {
             </div>
 
             <div className="space-y-4">
-              <Button variant="secondary" className="w-full" type="button">
-                <Upload className="w-4 h-4 mr-2" />
-                Upload image
-              </Button>
-
+              <FileUploadComponent />
               <Button type="submit" className="w-full">
+              <Send className="w-4 h-4 mr-2" />
                 Send report
               </Button>
             </div>
