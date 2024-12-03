@@ -68,7 +68,7 @@ export function FileUploadComponent() {
       />
       <Button onClick={handleButtonClick} variant={'secondary'} className="w-full">
         <Upload className="w-4 h-4 mr-2" />
-        Upload
+        Upload Images
       </Button>
     </div>
   );
