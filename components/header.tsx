@@ -8,7 +8,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export function Header() {
   return (
-    <header className="border-b">
+    <header className="">
       <div className="container mx-auto px-4 h-16 flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold tracking-tighter flex justify-center items-center gap-2">
           <span className="">
@@ -19,13 +19,13 @@ export function Header() {
               alt="logo"
             />
           </span>
-          SoMeFlagger.com
+          SoMeFlagger
         </Link>
 
         <Sheet>
           <SheetTrigger asChild>
             <button className="p-2">
-              <Menu className="h-6 w-6" />
+              <Menu className="h-10 w-10" />
               <span className="sr-only">Toggle menu</span>
             </button>
           </SheetTrigger>

@@ -30,13 +30,14 @@ export default function ReportForm() {
       <Card className="border-0 shadow-none">
         <CardHeader className="text-center space-y-1.5">
           <CardTitle className="text-2xl font-bold">
-            Report Harmful Platforms and Features
+          Seen Harmful Content Online? Report It Here, and We’ll Take Action!
           </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
+              <Label className="font-jura text-xl font-semibold">Create Report</Label>
             <div className="space-y-2">
-              <Label>Select platform</Label>
+              <Label className="font-jura text-lg">Select platform</Label>
               <Select value={platform} onValueChange={setPlatform}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select platform" />
@@ -51,7 +52,7 @@ export default function ReportForm() {
             </div>
 
             <div className="space-y-2">
-              <Label>Select Issue</Label>
+              <Label className="font-jura text-lg">Select Issue</Label>
               <RadioGroup value={issueType} onValueChange={setIssueType}>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="harmful" id="harmful" />
@@ -69,7 +70,7 @@ export default function ReportForm() {
             </div>
 
             <div className="space-y-2">
-              <Label>Describe what happened</Label>
+              <Label className="font-jura text-lg">Describe what happened</Label>
               <Textarea 
                 placeholder="Type your description here..."
                 className="min-h-[120px]"

@@ -4,7 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/header";
 
 export const metadata: Metadata = {
-  title: "SoMeFlagger.com",
+  title: "SoMeFlagger",
   description: "Seen Harmful Content Online? Report It Here, and We’ll Take Action!",
   metadataBase: new URL("https://someflagger.on.devnty.com"),
   alternates: {
@@ -31,7 +31,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="SoMeFlagger" />
       </Head>
 
-      <body>
+      <body className="bg-background">
         <Header />
         {children}
       </body>
