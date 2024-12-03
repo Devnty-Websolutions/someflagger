@@ -1,43 +1,46 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import * as React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
-import { Label } from "@/components/ui/label"
-import { Textarea } from "@/components/ui/textarea"
-import { Upload } from 'lucide-react'
+} from "@/components/ui/select";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Upload } from "lucide-react";
 
 export default function ReportForm() {
-  const [platform, setPlatform] = React.useState("")
-  const [issueType, setIssueType] = React.useState("")
-  
+  const [platform, setPlatform] = React.useState("");
+  const [issueType, setIssueType] = React.useState("");
+
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // Handle form submission
-    console.log({ platform, issueType })
-  }
+    console.log({ platform, issueType });
+  };
 
   return (
     <div className="container max-w-screen-xl mx-auto p-4">
       <Card className="border-0 shadow-none">
         <CardHeader className="text-center space-y-1.5">
-          <CardTitle className="text-2xl font-bold">
-          Seen Harmful Content Online? Report It Here, and We’ll Take Action!
+          <CardTitle className="text-xl font-extrabold flex flex-col mb-6">
+            <span>Seen Harmful Content Online?</span>
+            <span className="text-sm">Report It Here, and We’ll Take Action!</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-6">
-              <Label className="font-jura text-xl font-semibold">Create Report</Label>
+            <Label className="font-jura text-md font-semibold">
+              Create Report
+            </Label>
             <div className="space-y-2">
-              <Label className="font-jura text-lg">Select platform</Label>
+              <Label className="font-jura text-sm">Select platform</Label>
               <Select value={platform} onValueChange={setPlatform}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select platform" />
@@ -52,7 +55,7 @@ export default function ReportForm() {
             </div>
 
             <div className="space-y-2">
-              <Label className="font-jura text-lg">Select Issue</Label>
+              <Label className="font-jura text-sm">Select Issue</Label>
               <RadioGroup value={issueType} onValueChange={setIssueType}>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="harmful" id="harmful" />
@@ -70,27 +73,22 @@ export default function ReportForm() {
             </div>
 
             <div className="space-y-2">
-              <Label className="font-jura text-lg">Describe what happened</Label>
-              <Textarea 
+              <Label className="font-jura text-sm">
+                Describe what happened
+              </Label>
+              <Textarea
                 placeholder="Type your description here..."
                 className="min-h-[120px]"
               />
             </div>
 
             <div className="space-y-4">
-              <Button 
-                variant="secondary" 
-                className="w-full"
-                type="button"
-              >
+              <Button variant="secondary" className="w-full" type="button">
                 <Upload className="w-4 h-4 mr-2" />
                 Upload image
               </Button>
 
-              <Button 
-                type="submit"
-                className="w-full"
-              >
+              <Button type="submit" className="w-full">
                 Send report
               </Button>
             </div>
@@ -98,6 +96,5 @@ export default function ReportForm() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }
-
