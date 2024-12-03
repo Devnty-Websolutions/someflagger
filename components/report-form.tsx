@@ -29,9 +29,9 @@ export default function ReportForm() {
     <div className="container max-w-screen-xl mx-auto p-4">
       <Card className="border-0 shadow-none">
         <CardHeader className="text-center space-y-1.5">
-          <CardTitle className="text-xl font-extrabold flex flex-col mb-6">
+          <CardTitle className="text-xl font-extrabold flex flex-col mb-2">
             <span>Seen Harmful Content Online?</span>
-            <span className="text-sm">Report It Here, and We’ll Take Action!</span>
+            <span className="text-sm font-semibold">Report It Here, and We’ll Take Action!</span>
           </CardTitle>
         </CardHeader>
         <CardContent>
