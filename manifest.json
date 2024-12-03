@@ -8,17 +8,17 @@
     "description": "A social media flagging tool",
     "icons": [
       {
-        "src": "/someflagger-round-icon.svg",
+        "src": "/someflagger-logo.png",
         "sizes": "any",
-        "type": "image/svg+xml"
+        "type": "image/png"
       },
       {
-        "src": "/favicon-round-png.png",
+        "src": "/someflagger-logo.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "/favicon-round-png.png",
+        "src": "/someflagger-logo.png",
         "sizes": "512x512",
         "type": "image/png"
       }
