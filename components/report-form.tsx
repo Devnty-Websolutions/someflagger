@@ -10,14 +10,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+// import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Upload } from "lucide-react";
 
 export default function ReportForm() {
   const [platform, setPlatform] = React.useState("");
-  const [issueType, setIssueType] = React.useState("");
+  const [issueType,
+    //  setIssueType
+    ] = React.useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
