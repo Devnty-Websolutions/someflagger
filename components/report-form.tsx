@@ -19,6 +19,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { Toaster } from "@/components/ui/toaster";
+import { set } from "mongoose";
 
 export default function ReportForm() {
   const { toast } = useToast();
@@ -26,28 +27,31 @@ export default function ReportForm() {
   const [files, setFiles] = useState<File[]>([]);
   const [issueType, setIssueType] = React.useState("");
   const [description, setDescription] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const showDestructiveToast = (toastMessage: string) => {
     toast({
       variant: "destructive",
       title: "Error!",
       description: toastMessage,
-    })
-  }
+    });
+  };
   const showSuccessToast = (toastMessage: string) => {
     toast({
       variant: "success",
       title: "SUCCESS!",
       description: toastMessage,
-    })
-  }
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setIsLoading(true);
     // Handle form submission
     console.log({ platform, issueType, files });
     if (!platform || !issueType) {
       showDestructiveToast("Please fill all required fields.");
+      setIsLoading(false);
       return;
     }
 
@@ -77,6 +81,7 @@ export default function ReportForm() {
         setFiles([]);
       } else {
         showDestructiveToast(data.message || "An error occurred.");
+        setIsLoading(false);
       }
     } catch (error) {
       console.error("Error submitting report:", error);
@@ -86,6 +91,8 @@ export default function ReportForm() {
       } else {
         showDestructiveToast("An error occurred.");
       }
+    }finally{
+      setIsLoading(false);
     }
   };
 
@@ -171,7 +178,7 @@ export default function ReportForm() {
 
             <div className="space-y-4">
               <FileUploadComponent files={files} setFiles={setFiles} />
-              <Button type="submit" className="w-full">
+              <Button disabled={isLoading} type="submit" className="w-full disabled:opacity-50">
                 <Send className="w-4 h-4 mr-2" />
                 Send report
               </Button>
