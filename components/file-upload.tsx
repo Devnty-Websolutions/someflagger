@@ -1,12 +1,16 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Upload } from "lucide-react";
 
-export function FileUploadComponent() {
-  const [files, setFiles] = useState<File[]>([]);
+interface FileUploadComponentProps {
+  files: File[];
+  setFiles: React.Dispatch<React.SetStateAction<File[]>>;
+}
+
+export function FileUploadComponent({ files, setFiles }: FileUploadComponentProps) {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -14,7 +18,8 @@ export function FileUploadComponent() {
     setFiles(selectedFiles);
   };
 
-  const handleButtonClick = () => {
+  const handleButtonClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     inputRef.current?.click();
   };
 

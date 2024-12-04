@@ -16,18 +16,77 @@ import { Textarea } from "@/components/ui/textarea";
 import { Send } from "lucide-react";
 import { FileUploadComponent } from "./file-upload";
 import Link from "next/link";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Toaster } from "@/components/ui/toaster";
 
 export default function ReportForm() {
+  const { toast } = useToast();
   const [platform, setPlatform] = React.useState("");
-  const [
-    issueType,
-    //  setIssueType
-  ] = React.useState("");
+  const [files, setFiles] = useState<File[]>([]);
+  const [issueType, setIssueType] = React.useState("");
+  const [description, setDescription] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const showDestructiveToast = (toastMessage: string) => {
+    toast({
+      variant: "destructive",
+      title: "Error!",
+      description: toastMessage,
+    })
+  }
+  const showSuccessToast = (toastMessage: string) => {
+    toast({
+      variant: "success",
+      title: "SUCCESS!",
+      description: toastMessage,
+    })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission
-    console.log({ platform, issueType });
+    console.log({ platform, issueType, files });
+    if (!platform || !issueType) {
+      showDestructiveToast("Please fill all required fields.");
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append("platform", platform);
+    formData.append("issueType", issueType);
+    formData.append("description", description);
+    if (files.length > 0) {
+      files.forEach((file) => {
+        formData.append("file", file);
+      });
+    }
+
+    try {
+      const response = await fetch("/api/v1/report/create", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        showSuccessToast("Report submitted successfully!");
+        setPlatform("");
+        setIssueType("");
+        setDescription("");
+        setFiles([]);
+      } else {
+        showDestructiveToast(data.message || "An error occurred.");
+      }
+    } catch (error) {
+      console.error("Error submitting report:", error);
+      showDestructiveToast("An error occurred.");
+      if (error instanceof Error) {
+        showDestructiveToast(error.message || "An error occurred.");
+      } else {
+        showDestructiveToast("An error occurred.");
+      }
+    }
   };
 
   return (
@@ -64,7 +123,7 @@ export default function ReportForm() {
             </div>
             <div className="space-y-2">
               <Label className="font-jura text-sm">Select issue</Label>
-              <Select value={platform} onValueChange={setPlatform}>
+              <Select value={issueType} onValueChange={setIssueType}>
                 <SelectTrigger>
                   <SelectValue placeholder="Select issue" />
                 </SelectTrigger>
@@ -105,11 +164,13 @@ export default function ReportForm() {
               <Textarea
                 placeholder="Type your description here..."
                 className="min-h-[120px]"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
 
             <div className="space-y-4">
-              <FileUploadComponent />
+              <FileUploadComponent files={files} setFiles={setFiles} />
               <Button type="submit" className="w-full">
                 <Send className="w-4 h-4 mr-2" />
                 Send report
@@ -134,6 +195,7 @@ export default function ReportForm() {
           </Link>
         </div>
       </Card>
+      <Toaster />
     </div>
   );
 }
